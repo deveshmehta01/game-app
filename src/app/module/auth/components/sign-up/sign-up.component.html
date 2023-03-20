@@ -1,0 +1,143 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row class="justify-content-center position-relative">
+    <div class="position-absolute navBarIconShell">
+      <mat-icon class="pointer" aria-hidden="false" (click)="navigateToPreviousUrl()" aria-label="Example home icon"
+        fontIcon="arrow_back"></mat-icon>
+    </div>
+    <span>Sign Up</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<section class="authOuterShell">
+  <div class="container">
+    <div class="row">
+      <form [formGroup]="form" class="d-flex flex-column w-100">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>First Name</mat-label>
+          <input matInput type="text" class="auth form-control" formControlName="firstName"
+            [ngClass]="{ 'is-invalid': formValidations('firstName') }" placeholder="First Name" />
+          <mat-error *ngIf="formValidations('firstName')">
+            <ng-template [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+                validation: 'required',
+                message: ' Please provide a first name.',
+                control: form.get('firstName')
+              }"></ng-template>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Last Name</mat-label>
+          <input matInput type="text" class="auth form-control" formControlName="lastName"
+            [ngClass]="{ 'is-invalid': formValidations('lastName') }" placeholder="Last Name" />
+          <mat-error *ngIf="formValidations('lastName')">
+            <ng-template [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+                validation: 'required',
+                message: ' Please provide a last name.',
+                control: form.get('lastName')
+              }"></ng-template>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Mobile</mat-label>
+          <input matInput type="text" class="auth form-control" formControlName="mobile"
+            [ngClass]="{ 'is-invalid': formValidations('mobile') }" placeholder="Mobile" />
+          <mat-error *ngIf="formValidations('mobile')">
+            <ng-template [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+                validation: 'required',
+                message: ' Please provide a mobile no.',
+                control: form.get('mobile')
+              }"></ng-template>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Username</mat-label>
+          <input matInput type="text" class="auth form-control" formControlName="userName"
+            [ngClass]="{ 'is-invalid': formValidations('userName') }" placeholder="Username" />
+          <mat-error *ngIf="formValidations('userName')">
+            <ng-template [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+                validation: 'required',
+                message: ' Please provide a user name.',
+                control: form.get('userName')
+              }"></ng-template>
+          </mat-error>
+          <mat-error *ngIf="formValidations('userName')">
+            <ng-template [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+                validation: 'email',
+                message: ' Please provide valid user name.',
+                control: form.get('userName')
+              }"></ng-template>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" class="auth form-control" [type]="isPasswordHide ? 'password' : 'text'"
+            formControlName="password" [ngClass]="{ 'is-invalid': formValidations('password') }"
+            placeholder="Password" />
+          <button mat-icon-button matSuffix (click)="isPasswordHide = !isPasswordHide"
+            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="isPasswordHide">
+            <mat-icon>{{isPasswordHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="formValidations('password')">
+            <ng-template [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+                validation: 'required',
+                message: ' Please provide password.',
+                control: form.get('password')
+              }"></ng-template>
+            <ng-template [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+                validation: 'passwordStrength',
+                message: ' Password is invalid. Password must contain at least one small & one capital alphabet & one special corrector and numeric digit.',
+                control: form.get('password')
+              }"></ng-template>
+            <ng-template [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+                validation: 'minlength',
+                message: ' Password minimum length is 5.',
+                control: form.get('password')
+              }"></ng-template>
+            <ng-template [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+                validation: 'maxlength',
+                message: ' Password maximum length is 15.',
+                control: form.get('password')
+              }"></ng-template>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Confirm password</mat-label>
+          <input matInput type="password" class="auth form-control" formControlName="confirmPassword"
+            [ngClass]="{ 'is-invalid': formValidations('confirmPassword') }" placeholder="Confirm password"
+            [type]="isConfirmPasswordHide ? 'password' : 'text'" />
+          <button mat-icon-button matSuffix (click)="isConfirmPasswordHide = !isConfirmPasswordHide"
+            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="isConfirmPasswordHide">
+            <mat-icon>{{isConfirmPasswordHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="formValidations('confirmPassword')">
+            <ng-template [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+                validation: 'required',
+                message: ' Please provide a confirm password.',
+                control: form.get('confirmPassword')
+              }"></ng-template>
+          </mat-error>
+          <mat-error *ngIf="formValidations('confirmPassword')">
+            <ng-template [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+                validation: 'matching',
+                message: 'Confirm password is not match.',
+                control: form.get('confirmPassword')
+              }"></ng-template>
+          </mat-error>
+        </mat-form-field>
+        <div>
+          <button mat-raised-button color="primary" class="w-100" (click)="onSubmit()">
+            Sign up
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div></div>
+</section>
+<ng-template #formError let-control="control" let-message="message" let-validation="validation">
+  <ng-container *ngIf="
+      control.hasError(validation) &&
+      (control.touched || control.dirty || isFormSubmit)
+    ">
+    {{ message }}
+  </ng-container>
+</ng-template>

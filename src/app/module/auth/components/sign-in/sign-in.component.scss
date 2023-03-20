@@ -1,0 +1,25 @@
+.mat-mdc-button.mat-mdc-button-base,
+.mat-mdc-raised-button.mat-mdc-button-base,
+.mat-mdc-unelevated-button.mat-mdc-button-base,
+.mat-mdc-outlined-button.mat-mdc-button-base {
+  height: 36px;
+  border-radius: 13px !important;
+  margin-top: 20px;
+}
+
+form {
+  padding: 21px 44px;
+}
+
+.forgotPassword {
+  font-size: small;
+  color: blue;
+  cursor: pointer;
+}
+
+.sign-up {
+  display: block;
+  float: right;
+  font-size: 14px !important;
+  margin-top: 10px;
+}
