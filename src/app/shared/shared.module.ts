@@ -5,13 +5,16 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @NgModule({
-  declarations: [GlobalSpinnerComponent],
+  declarations: [
+    GlobalSpinnerComponent,
+  ],
   imports: [
     CommonModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
   ],
   exports: [
-    GlobalSpinnerComponent
+    GlobalSpinnerComponent,
+
   ]
 })
 export class SharedModule { }

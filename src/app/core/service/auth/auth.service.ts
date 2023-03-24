@@ -1,4 +1,4 @@
-import { ISignup, ISignIn } from './auth.interface';
+import { ISignup, ISignIn, IAccessAllowed } from './auth.interface';
 import { CoreHttpService } from './../core-http/core-http.service';
 import { Router } from '@angular/router';
 import { Observable, BehaviorSubject, catchError, of, finalize, map, switchMap } from 'rxjs';
@@ -14,9 +14,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
-  /**
-    * Contains base url api end points
-    */
+
   baseUrl = environment.baseUrl;
   private authLocalStorageToken = `${environment.appVersion}-${environment.userdataKey}`;
   currentUser$: Observable<any>;
@@ -52,7 +50,7 @@ export class AuthService {
         return result;
       }),
       catchError((err) => {
-        throw err
+        throw err;
       }),
     );
   }
@@ -111,16 +109,14 @@ export class AuthService {
     return false;
   }
 
-  isAuthenticated(): any {
-    const jwtHelper = new JwtHelperService();
+  isAuthenticated(): Observable<IAccessAllowed> {
     try {
       const authData = this.coreHttpService.getToken();
       if (authData) {
-        const token = authData;
-        const isExpired = jwtHelper.isTokenExpired(token);
         return of({ accessAllowed: true });
       } else {
         this.router.navigate(['/auth/sign-in']);
+        return of({ accessAllowed: false });
       }
     } catch (error) {
       return of({ accessAllowed: false });

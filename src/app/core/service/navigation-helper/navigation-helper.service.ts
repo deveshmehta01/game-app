@@ -1,6 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute, NavigationStart } from '@angular/router';
-import { Subject, asyncScheduler } from 'rxjs';
+import { Subject, asyncScheduler, BehaviorSubject } from 'rxjs';
 import { throttleTime, mergeMap } from 'rxjs/operators';
 
 interface UrlHistory {
@@ -24,6 +24,7 @@ export class NavigationHelperService {
 
   private STORAGE_LIMIT = 20;
 
+  $drawer = new BehaviorSubject<boolean>(false);
 
   constructor(
     public router: Router,

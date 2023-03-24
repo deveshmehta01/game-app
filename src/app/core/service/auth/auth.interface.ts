@@ -10,3 +10,6 @@ export interface ISignIn {
   firstName: string;
   password: string;
 }
+export interface IAccessAllowed {
+  accessAllowed: boolean
+}

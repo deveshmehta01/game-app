@@ -1,3 +1,4 @@
+import { CanActivate } from '@angular/router';
 import { LoaderInterceptor } from './core/intrceptor/loader/loader.interceptor';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -7,6 +8,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+import AuthGuard from './core/guards/auth/auth.guard';
 
 @NgModule({
   declarations: [
@@ -20,11 +22,12 @@ import { ToastrModule } from 'ngx-toastr';
     ToastrModule.forRoot(),
   ],
   providers: [
+    AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoaderInterceptor,
       multi: true
-    }
+    },
   ],
   bootstrap: [AppComponent]
 })

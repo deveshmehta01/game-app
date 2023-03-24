@@ -51,7 +51,7 @@ export class CoreHttpService {
 
   private getAuthFromLocalStorage(): string | undefined {
     try {
-      const token: string | null = localStorage.getItem(this.authLocalStorageToken);
+      const token: string = localStorage.getItem(this.authLocalStorageToken) || '';
       if (token) {
         const authData: any = JSON.parse(token);
         return authData;
@@ -68,7 +68,7 @@ export class CoreHttpService {
   getToken(): string | undefined {
     const helper = new JwtHelperService();
     this.authData = this.getAuthFromLocalStorage();
-    this.token = helper.decodeToken(this.authData);
+    this.token = helper.decodeToken(this.authData.token);
     return this.token;
   }
 
