@@ -1,0 +1,35 @@
+<mat-drawer-container class="example-container" [hasBackdrop]="'true'">
+  <mat-drawer #sidenav [mode]="'over'">
+    <mat-card class="mat-elevation-z1" appearance="raised">
+      <mat-card-content>
+        <div class="circleStyleAvatar avatarImage">
+        </div>
+      </mat-card-content>
+      <mat-card-header class="UserNameAndPoints">
+        <mat-card-title>First name Last name </mat-card-title>
+        <mat-card-title>Point : 108.0</mat-card-title>
+      </mat-card-header>
+    </mat-card>
+    <div class="d-flex flex-column justify-content-between">
+      <mat-list role="list">
+        <mat-list-item matRipple class="pointer" (click)="openSideNavBar(false)" *ngFor="let item of sideNavRoutes">
+          <mat-icon matListItemIcon *ngIf="item.isMatIcon">{{item.icon}}</mat-icon>
+          <div matListItemTitle>{{item.title}}</div>
+        </mat-list-item>
+      </mat-list>
+      <mat-list role="list">
+        <mat-list-item class="text-center">
+          <div matListItemTitle>Version 1.0.0 </div>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div>
+      <app-top-navigation-bar></app-top-navigation-bar>
+      <div style="margin-top: 150px;">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

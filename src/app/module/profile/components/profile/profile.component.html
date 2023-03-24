@@ -1,0 +1,81 @@
+<section class="authOuterShell">
+  <div class="container">
+    <div class="row">
+      <div class="d-flex w-100 align-content-center justify-content-center" style="margin-bottom: 20px;">
+        <div class="circleStyleAvatar avatarImage">
+        </div>
+      </div>
+      <form [formGroup]="form" class="d-flex flex-column w-100" style="padding: 20px;">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>First Name</mat-label>
+          <input matInput type="text" class="auth form-control" formControlName="firstName"
+            [ngClass]="{ 'is-invalid': formValidations('firstName') }" placeholder="First Name" />
+          <mat-error *ngIf="formValidations('firstName')">
+            <ng-template [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+                validation: 'required',
+                message: ' Please provide a first name.',
+                control: form.get('firstName')
+              }"></ng-template>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Last Name</mat-label>
+          <input matInput type="text" class="auth form-control" formControlName="lastName"
+            [ngClass]="{ 'is-invalid': formValidations('lastName') }" placeholder="Last Name" />
+          <mat-error *ngIf="formValidations('lastName')">
+            <ng-template [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+                validation: 'required',
+                message: ' Please provide a last name.',
+                control: form.get('lastName')
+              }"></ng-template>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Username</mat-label>
+          <input matInput type="text" class="auth form-control" formControlName="userName"
+            [ngClass]="{ 'is-invalid': formValidations('userName') }" placeholder="Username" />
+          <mat-error *ngIf="formValidations('userName')">
+            <ng-template [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+                validation: 'required',
+                message: ' Please provide a user name.',
+                control: form.get('userName')
+              }"></ng-template>
+          </mat-error>
+          <mat-error *ngIf="formValidations('userName')">
+            <ng-template [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+                validation: 'email',
+                message: ' Please provide valid user name.',
+                control: form.get('userName')
+              }"></ng-template>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Mobile</mat-label>
+          <input matInput type="text" class="auth form-control" formControlName="mobile"
+            [ngClass]="{ 'is-invalid': formValidations('mobile') }" placeholder="Mobile" />
+          <mat-error *ngIf="formValidations('mobile')">
+            <ng-template [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+                validation: 'required',
+                message: ' Please provide a mobile no.',
+                control: form.get('mobile')
+              }"></ng-template>
+          </mat-error>
+        </mat-form-field>
+        <div>
+          <button mat-raised-button color="primary" class="w-100" (click)="onSubmit()">
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div></div>
+</section>
+<ng-template #formError let-control="control" let-message="message" let-validation="validation">
+  <ng-container *ngIf="
+      control.hasError(validation) &&
+      (control.touched || control.dirty || isFormSubmit)
+    ">
+    {{ message }}
+  </ng-container>
+</ng-template>

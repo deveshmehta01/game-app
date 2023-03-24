@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="d-flex cardGapPadding flex-column">
+    <mat-card matRipple class=" mat-elevation-z8" *ngFor="let item of list">
+      <mat-card-header>
+        <div class="d-flex flex-row flex-wrap justify-content-between w-100 align-items-baseline gap-10">
+          <mat-card-title class="userName">User Name</mat-card-title>
+          <mat-card-subtitle>Available Points : 123456789</mat-card-subtitle>
+        </div>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Name last name</p>
+      </mat-card-content>
+      <mat-card-actions class="justify-content-between flex-wrap align-items-baseline gap-10 ">
+        <mat-card-subtitle>1234567890</mat-card-subtitle>
+        <button mat-fab extended color="primary">
+          Transfer Point
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

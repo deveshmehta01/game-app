@@ -1,0 +1,29 @@
+mat-card {
+  width: 100%;
+}
+
+.cardGapPadding {
+  gap: 15px;
+  padding: 17px 0;
+}
+
+mat-card-actions {
+  padding: 10px 20px !important;
+}
+
+.mat-mdc-extended-fab {
+  height: 30px !important;
+}
+
+.userName {
+  font-weight: 500;
+  font-size: larger;
+}
+
+.align-items-baseline {
+  align-items: baseline !important;
+}
+
+.gap-10 {
+  gap: 10px;
+}
