@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="d-flex cardGapPadding flex-column">
+        <mat-card matRipple class=" mat-elevation-z8" *ngFor="let item of list">
+            <mat-card-header>
+                <div class="d-flex flex-column text-center w-100">
+                    <mat-card-title class="gameName text-center">Game Name </mat-card-title>
+                </div>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="d-flex flex gap-10 text-center">
+                    <div class="d-flex flex-column w-100 bg-white text-dark padding-y-10-px">
+                        <mat-card-title class="openAndCloseTitle">Open</mat-card-title>
+                        <mat-card-subtitle>10:30 PM</mat-card-subtitle>
+                    </div>
+                    <div class="d-flex flex-column w-100 bg-white text-dark padding-y-10-px">
+                        <mat-card-title class="openAndCloseTitle">Close</mat-card-title>
+                        <mat-card-subtitle>10:40 PM</mat-card-subtitle>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

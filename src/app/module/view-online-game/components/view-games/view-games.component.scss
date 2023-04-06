@@ -1,0 +1,51 @@
+mat-card {
+    width: 100%;
+    background: #3e50b4;
+    color: white;
+}
+
+.cardGapPadding {
+    gap: 15px;
+    padding: 17px 0;
+}
+
+.gameName {
+    font-weight: 500;
+    font-size: larger;
+    margin-bottom: 13px;
+}
+
+.openAndCloseTitle {
+    font-weight: 500;
+    font-size: larger;
+    margin-bottom: 10px;
+    color: #3e50b4 !important;
+}
+
+.align-items-baseline {
+    align-items: baseline !important;
+}
+
+.gap-10 {
+    gap: 10px;
+}
+
+.text-dark {
+    color: black;
+}
+
+.bg-white {
+    background-color: white;
+}
+
+.text-center {
+    text-align: center;
+}
+
+mat-card-content {
+    padding: 0 7px;
+}
+
+.padding-y-10-px {
+    padding: 10px 0;
+}

@@ -1,0 +1,49 @@
+<mat-tab-group [color]="'primary'" [backgroundColor]="'primary'">
+    <mat-tab label="Purchased">
+        <div class="container">
+            <ng-container [ngTemplateOutlet]="purchased"></ng-container>
+        </div>
+    </mat-tab>
+    <mat-tab label="Spend">
+        <div class="container">
+            <ng-container [ngTemplateOutlet]="spend"></ng-container>
+        </div>
+    </mat-tab>
+</mat-tab-group>
+
+
+
+<ng-template #purchased>
+    <ng-container>
+        <div class="p-1">
+            <mat-card matRipple class=" mat-elevation-z8">
+                <mat-card-content>
+                    <mat-card-title-group>
+                        <mat-card-title>Point purchased : <span class="point">+1</span></mat-card-title>
+                        <mat-card-subtitle>Received From Operator 2</mat-card-subtitle>
+                    </mat-card-title-group>
+                    <div class="text-right">
+                        <mat-card-subtitle>{{currentDate|date:' d MMM y h:mm a'}}</mat-card-subtitle>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </ng-container>
+</ng-template>
+<ng-template #spend>
+    <ng-container>
+        <div class="p-1">
+            <mat-card matRipple class=" mat-elevation-z8">
+                <mat-card-content>
+                    <mat-card-title-group>
+                        <mat-card-title>Point purchased : <span class="point">+1</span></mat-card-title>
+                        <mat-card-subtitle>Received From Operator 2</mat-card-subtitle>
+                    </mat-card-title-group>
+                    <div class="text-right">
+                        <mat-card-subtitle>{{currentDate|date:' d MMM y h:mm a'}}</mat-card-subtitle>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </ng-container>
+</ng-template>
